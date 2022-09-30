@@ -41,6 +41,7 @@ const home = require("./src/routes/home"); //home폴더안의 index.js 파일 �
 app.set("views", "./src/views");
 app.set("view engine", "ejs");
 
+app.use(express.static(`${__dirname}/src/public`));
 app.use("/",home); // use는 미들웨어를 등록하는 메서드이다. 미들웨어 개념이 좀 어려운데 ,.. 일단 씀/ 
 
 module.exports=app;

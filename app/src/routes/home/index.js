@@ -17,7 +17,8 @@ const ctrl = require("./home.ctrl");
 
 // 아무튼 그렇고 home.ctrl.js파일을 만들었으니까 아래처럼 쓸 수 있음. 
 
-router.get("/", ctrl.hello);
-router.get("/login", ctrl.login);
+router.get("/", ctrl.output.home);
+router.get("/login", ctrl.output.login);
+router.post("/login", ctrl.process.login); //프론트엔드가 전달한 로그인데이터를 받아서 로그인 기능을 처리할 부분
 
 module.exports = router; //외부에서 router변수 사용할 수 있게 내보냄. app.js파일에서 써야하니까.

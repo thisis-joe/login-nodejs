@@ -16,7 +16,8 @@ function login(){
         headers:{
             "Content-Type":"application/json", //내가 보내는게 json임을 headers를 통해 알려야함
         },
-        body : JSON.stringify(req)
-    })
+        body : JSON.stringify(req),
+    }).then((res)=> res.json())//fetch끝에 then : 서버에서 응답한 내용을 받아올수있음
+    .then((res)=>console.log(res)); //then한번 더 찍는 이유 : res.json반환값은 Promise이다. 이걸읽으려고,
 
 }

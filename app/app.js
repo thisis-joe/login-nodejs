@@ -26,8 +26,10 @@
 //##########################################
 
 //##모듈
-const express = require("express"); //require 명령어로 express모듈을 다운로드
+const express = require("express"); //require 명령어로 express모듈을 다운로드한걸불러옴
+const bodyParser = require("body-parser"); //다른데서 body를 파싱하려면 다운해야하는 모듈 npm i body parser -s 로 설치한다. -s로 설치하면 package.json에 적힘
 const app = express(); //express실행시켜서 app이라는 변수안에 넣음
+
 
 const PORT = 3000;
 
@@ -40,8 +42,10 @@ const home = require("./src/routes/home"); //home폴더안의 index.js 파일 �
 //views 안에 저장될 html코드를 어떤 엔진으로 실행할건지도 정함. view엔진중에 ejs사용함. ejs는 html과 유사함
 app.set("views", "./src/views");
 app.set("view engine", "ejs");
+app.use(express.static(`${__dirname}/src/public`));//정적경로 추가. 
+app.use(bodyParser.json());//bodyparser가 json데이터를 파싱해올수있게 함. bodyparser는 설치한다고 끝이아니고 사용하기위한 미들웨어를 등록해줘야한다,. 
+app.use(bodyParser.urlencoded({extended:true}));//url을 통해 전달되는 한글,공백 등과같은 문자가 포함될 경우 제대로 인식되지 않는 문제 해결
 
-app.use(express.static(`${__dirname}/src/public`));
 app.use("/",home); // use는 미들웨어를 등록하는 메서드이다. 미들웨어 개념이 좀 어려운데 ,.. 일단 씀/ 
 
 module.exports=app;

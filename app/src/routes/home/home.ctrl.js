@@ -10,18 +10,43 @@
 //      res.render("home/login");
 //     })    ===>>>> 이부분은 콜백함수라고 했다. 콜백함수를 썼던 이유는 이전으로 되감아서 컨트롤러 기능을 갖게 해줄 수 있었기 때문.
 
-// hello라는 컨트롤러 함수를 만들고, 외부에서 사용하는 방식
-const hello = (req, res) => {
-  res.send(``);
-  res.render("home/index"); //render를 통해서 다른파일에있는거랑 연동함
-};
+const output = {
+  home : (req, res) => {
+    res.send(``);
+    res.render("home/index"); //render를 통해서 다른파일에있는거랑 연동함
+  },
+  login : (req, res) => {
+    res.render("home/login");
+  },
+}
 
-const login = (req, res) => {
-  res.render("home/login");
-};
+const users={
+  id:["우동균","네이버","카카오"],
+  psword:["123","1234","12345"],
+}
+
+const process ={
+  login:(req,res)=>{
+    const id = req.body.id, 
+      psword = req.body.psword;
+    
+    if(users.id.includes(id)){
+      const idx=users.id.indexOf(id);
+      if(users.psword[idx]===psword){
+        return res.json({
+          success:true, //res니까 프론트로 응답을 보내주는 것임
+      });}
+    }
+    return res.json({ //위에 if에서 return으로 나와버리기 때문에 else안써도됨
+      success:false,
+      msg:"로그인에 실패하셨습니다.",
+    })
+  },
+} 
+
 
 module.exports={
-    hello,login,
+    output,process,
 };
 //오브젝트 설명. : 오브젝트는 원래 키 - 값으로 구성된다. 그런데 value가 key랑 같으면 key 하나만 적어도 key : key 로 인식한다.
 //원래모양

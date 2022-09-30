@@ -11,6 +11,12 @@ function login(){
         id : id.value,
         psword : psword.value,
     }
-    console.log(req);
-    //fetch(); //서버에 전달
+    fetch("/login",{
+        method:"POST", //body로 데이터를 보낼거면 POST라는 http 메서드를 사용해야함
+        headers:{
+            "Content-Type":"application/json", //내가 보내는게 json임을 headers를 통해 알려야함
+        },
+        body : JSON.stringify(req)
+    })
+
 }

@@ -33,12 +33,12 @@ const app = express(); //express실행시켜서 app이라는 변수안에 넣음
 
 const PORT = 3000;
 
-//##라우팅
-const home = require("./src/routes/home"); //home폴더안의 index.js 파일 알아서 읽음
+//##라우팅 부분을 담당하는 파일 불러오기
+const home = require("./src/routes/home/"); //home폴더안의 index.js 파일 알아서 읽음
 
 //##앱세팅 
 //views를 사용함으로써 res.send(``) 안에 html코드를 안적고 여기서 관리 가능.
-//views를 관리할 파일경로를 두번째 파라미터로.
+//두번째 파라미터 : views를 관리하는 파일
 //views 안에 저장될 html코드를 어떤 엔진으로 실행할건지도 정함. view엔진중에 ejs사용함. ejs는 html과 유사함
 app.set("views", "./src/views");
 app.set("view engine", "ejs");

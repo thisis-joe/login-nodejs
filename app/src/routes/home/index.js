@@ -13,7 +13,7 @@ const ctrl = require("./home.ctrl");
 // }); //이게 없으면 로컬3000 화면에는 루트를 찾을수 없다는 의미로 Cannot GET / 만 뜨게 된다.
 // //브라우저에서 루트로 요청을 받으면 뭘 하겠다는 의미는 두번째 파라미터 콜백함수에서 정의해줌
 // //브라우저에서 요청을 받고 응답을 하기 위해서. 
-   // 요청이뭔지 알기위해서 req파라미터, 어떤 응답을 줄지res 파라미터. req에 따라 어떤 res를 줄지 내부적으로 설정가능 . if req == 어쩌고 저쩌고
+// 요청이뭔지 알기위해서 req파라미터, 어떤 응답을 줄지res 파라미터. req에 따라 어떤 res를 줄지 내부적으로 설정가능 . if req == 어쩌고 저쩌고
 
 router.get("/", ctrl.output.home);
 router.get("/login", ctrl.output.login);

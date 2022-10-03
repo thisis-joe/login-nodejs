@@ -1,0 +1,2 @@
+src는 mvc패턴을 따르고 있다
+models, views, ctrl()

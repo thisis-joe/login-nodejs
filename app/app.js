@@ -1,4 +1,7 @@
-//메인 서버 파일
+//메인파일(메인 서버 파일) -> node라는 서버의 기본 설정들이 이루어짐
+
+//이 서버의 실행파일은 bin안에 있다.
+
 //터미널에서 node app.js 하면 app.js파일을 javascript로 읽어준다
 //node.js의 v8엔진은 크롬브라우저에서도 사용되는 js컴파일러라고 보면됨.
 //npm설치할때 --save 옵션을 꼭 주자. 나중에 package.json파일에서 관리하기 편해진다.
@@ -29,7 +32,6 @@
 const express = require("express"); //require 명령어로 express모듈을 다운로드한걸불러옴
 const bodyParser = require("body-parser"); //다른데서 body를 파싱하려면 다운해야하는 모듈 npm i body parser -s 로 설치한다. -s로 설치하면 package.json에 적힘
 const app = express(); //express실행시켜서 app이라는 변수안에 넣음
-
 
 const PORT = 3000;
 

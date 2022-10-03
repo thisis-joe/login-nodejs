@@ -15,14 +15,14 @@ function login(){
         method:"POST", //body로 데이터를 보낼거면 POST라는 http 메서드를 사용해야함
         headers:{
             "Content-Type":"application/json", //내가 보내는게 json임을 headers를 통해 알려야함
-        },
+        }, 
         body : JSON.stringify(req),
     })
     .then((res)=> res.json())//fetch끝에 then : 서버에서 응답한 내용을 받아올수있음
     .then((res)=>{
         if(res.success){
+            alert(res.msge);
             location.href="/"; //루트로 이동
-            alert(res.msg);
         }else{
             alert(res.msg);
         }

@@ -1,17 +1,20 @@
 "use strict";
-//뭐하는파일? : 
 const id = document.querySelector("#id"),
     psword=document.querySelector("#psword"),
-    loginBtn=document.querySelector("#button");
+    confirmPsword=document.querySelector("#confirm-psword"),
+    registerBtn=document.querySelector("#button");
 
-loginBtn.addEventListener("click",login);
+registerBtn.addEventListener("click",register);
 
-function login(){
+function register(){
     const req={
         id : id.value,
+        name : name.value,
         psword : psword.value,
+        confirmPsword:confirmPsword.value,
     }
-    fetch("/login",{
+    console.log(req);
+    fetch("/register",{
         method:"POST", //body로 데이터를 보낼거면 POST라는 http 메서드를 사용해야함
         headers:{
             "Content-Type":"application/json", //내가 보내는게 json임을 headers를 통해 알려야함
@@ -22,13 +25,13 @@ function login(){
     .then((res)=>{
         if(res.success){
             alert(res.msge);
-            location.href="/"; //루트로 이동
+            location.href="/login"; //루트로 이동
         }else{
             alert(res.msg);
         }
     })
     .catch((err)=>{
-        console.error((new Error("로그인 중 에러 발생")));
+        console.error((new Error("회원가입 중 에러 발생")));
     })
-    ; //then한번 더 찍는 이유 : res.json반환값은 Promise이다. 이걸읽으려고,
+    ; 
 }
